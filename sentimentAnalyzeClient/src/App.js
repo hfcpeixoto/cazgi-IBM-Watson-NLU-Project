@@ -3,6 +3,9 @@ import './App.css';
 import EmotionTable from './EmotionTable.js';
 import React from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet'
+
+const TITLE = "Sentiment Analyzer"
 
 class App extends React.Component {
   state = {innercomp:<textarea rows="4" cols="50" id="textinput"/>,
@@ -81,6 +84,9 @@ class App extends React.Component {
   render() {
     return (  
       <div className="App">
+        <Helmet>
+              <title>{TITLE}</title>
+        </Helmet>
       <button className="btn btn-info" onClick={this.renderTextArea}>Text</button>
         <button className="btn btn-dark"  onClick={this.renderTextBox}>URL</button>
         <br/><br/>
