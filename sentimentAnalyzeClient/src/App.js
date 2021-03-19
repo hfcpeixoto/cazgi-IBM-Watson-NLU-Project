@@ -46,19 +46,23 @@ class App extends React.Component {
     } else {
       url = url+"/text/sentiment?text="+document.getElementById("textinput").value;
     }
+    console.log(url)
     ret = axios.get(url);
     ret.then((response)=>{
 
       //Include code here to check the sentiment and fomrat the data accordingly
-
+      console.log(response)
+      console.log(response.data)
       this.setState({sentimentOutput:response.data});
+      console.log(response.data)
       let output = response.data;
-      if(response.data === "positive") {
-        output = <div style={{color:"green",fontSize:20}}>{response.data}</div>
-      } else if (response.data === "negative"){
-        output = <div style={{color:"red",fontSize:20}}>{response.data}</div>
+      
+      if(output === "positive") {
+        output = <div style={{color:"green",fontSize:20}}>{output}</div>
+      } else if (output === "negative"){
+        output = <div style={{color:"red",fontSize:20}}>{output}</div>
       } else {
-        output = <div style={{color:"orange",fontSize:20}}>{response.data}</div>
+        output = <div style={{color:"orange",fontSize:20}}>{output}</div>
       }
       this.setState({sentimentOutput:output});
     });
