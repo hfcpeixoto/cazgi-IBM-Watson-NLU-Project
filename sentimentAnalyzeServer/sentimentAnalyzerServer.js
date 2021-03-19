@@ -42,7 +42,7 @@ app.get("/url/emotion", (req,res) => {
 
     nlu.analyze(analyzeParams)
         .then(analysisResults => {
-            console.log(JSON.stringify(analysisResults, null, 2));
+            //console.log(JSON.stringify(analysisResults, null, 2));
             return res.send(analysisResults.result.emotion.document.emotion);
         })
         .catch(err => {
@@ -66,11 +66,11 @@ app.get("/url/sentiment", (req,res) => {
 
     nlu.analyze(analyzeParams)
         .then(analysisResults => {
-            console.log(JSON.stringify(analysisResults.result, null, 2));
+            //console.log(JSON.stringify(analysisResults.result, null, 2));
             let score = analysisResults.result.sentiment.document.score
             let label = analysisResults.result.sentiment.document.label
             console.log(score,label)
-            return res.send("Sentiment for url: " + label + " (score: " + score + ")");
+            return res.send(label);
         })
         .catch(err => {
             console.log('error:', err);
@@ -82,7 +82,6 @@ app.get("/url/sentiment", (req,res) => {
 
 app.get("/text/emotion", (req,res) => {
 
-    console.log("text emotion")
     let analyzeParams = {
         'text': req.query.text,
         'features': {
@@ -94,7 +93,7 @@ app.get("/text/emotion", (req,res) => {
 
     nlu.analyze(analyzeParams)
         .then(analysisResults => {
-            console.log(JSON.stringify(analysisResults, null, 2));
+            //console.log(JSON.stringify(analysisResults, null, 2));
             return res.send(analysisResults.result.emotion.document.emotion);
         })
         .catch(err => {
@@ -118,11 +117,11 @@ app.get("/text/sentiment", (req,res) => {
 
     nlu.analyze(analyzeParams)
         .then(analysisResults => {
-            console.log(JSON.stringify(analysisResults.result, null, 2));
+            //console.log(JSON.stringify(analysisResults.result, null, 2));
             let score = analysisResults.result.sentiment.document.score
             let label = analysisResults.result.sentiment.document.label
             console.log(score,label)
-            return res.send("Sentiment for text: " + label + " (score: " + score + ")");
+            return res.send(label);
         })
         .catch(err => {
             console.log('error:', err);
